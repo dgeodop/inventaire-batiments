@@ -2,7 +2,7 @@
 	<div ng-controller="ctrlBatEtabl">
 		<h3>Liste des bâtiments</h3>
 		<div ng-repeat="bat in bats">
-			<a href="#/{{idEtabl}}/{{bat.id_bat}}">
+			<a href="#/{{bat.id_bat}}">
 				<p>{{bat.nom_bat}}</p>
 			</a>
 		</div>
@@ -12,20 +12,20 @@
 	<h3>
 		Ajouter un bâtiment...
 	</h3>
-	<div class="col-md-7 col-md-offset-1" ng-controller="ctrlIdEtabl">
-		<a href="#/{{idEtabl}}/ajout_bat/ancien">
+	<div class="col-md-7 col-md-offset-1">
+		<a href="#/ajout_bat/ancien">
 			<button class="btn btn-primary">
 				.... ayant été récemment supprimé de votre inventaire
 			</button>
 		</a>
 		<br><br>
-		<a href="#/{{idEtabl}}/ajout_bat/autre_etabl">
+		<a href="#/ajout_bat/autre_etabl">
 			<button class="btn btn-primary">
 				... utilisé, ou ayant été utilisé, par un autre établissement
 			</button>
 		</a>
 		<br><br>
-		<a href="#/{{idEtabl}}/ajout_bat/nouveau">
+		<a href="#/ajout_bat/nouveau">
 			<button class="btn btn-primary">
 				... neuf
 			</button>

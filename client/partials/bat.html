@@ -39,7 +39,25 @@
 			</tr>
 		</table>
 	</div>
-
+	<div ng-controller="ctrlSal">
+		<h3>Salles
+			<a href="#/{{idBat}}/modif_salles_bat">
+				<button class="btn btn-primary">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+			</a>
+		</h3>
+		<table class="table">
+			<tr class="active">
+				<td>TYPE</td>
+				<td>QUANTITÉ</td>
+			</tr>
+			<tr ng-repeat="sal in sals">
+				<td>{{sal.typ_sal_nom}}</td>
+				<td>{{sal.qte}}</td>
+			</tr>
+		</table>
+	</div>
 	<div ng-controller="ctrlBat">
 		<h3>Année 
 			<a href="#/{{bat.id_bat}}/modif_annees_bat">

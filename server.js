@@ -9,13 +9,14 @@ var auth = require('./auth');
 var app = express();
 
 //controllers
+/*
 var ctrlEtabl = require('./controllers/etabl');
 var ctrlBat = require('./controllers/bat');
 var ctrlPostBat = require('./controllers/postbat');
 var ctrlSal = require('./controllers/sal');
 var ctrlPostSal = require('./controllers/postsal');
 var ctrlAdr = require('./controllers/adr');
-
+*/
 //config
 app.set('views', './views');
 app.set('view engine', 'jade');

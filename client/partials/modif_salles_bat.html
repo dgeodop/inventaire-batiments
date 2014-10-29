@@ -1,7 +1,6 @@
 <div class="col-md-12">
 	<div ng-controller="ctrlBat as edit">
 		<h2>{{bat.nom_bat}}</h2>
-	</div>
 		<div ng-controller="ctrlSalNotInBat as app">
 			<h3>Ajouter un type de salle</h3>
 			<form class="form-inline">
@@ -17,33 +16,38 @@
 			</form>			
 		</div>
 		<br>
-	<div ng-controller="ctrlSal as app">
-		<h3>Modifier les salles de ce bâtiment</h3>
-		<table class="table">
-			<tr class="active">
-				<td>TYPE</td>
-				<td>QUANTITÉ</td>
-				<td>MODIFIER NB.</td>
-				<td>SUPPRIMER</td>
-			</tr>
-			<tr ng-repeat="sal in sals">
-				<td>{{sal.typ_sal_nom}}</td>
-				<td>{{sal.qte}}</td>
-				<td>
-					<form class="form-inline">
-						<input class="form-control" style="width: 60px" type="number" ng-model="sal.nouvQte">
-						<input type="hidden" ng-model="sal.id_sal">
-						<button class="btn btn-primary" ng-click="app.editQteSal(sal)">
-							<span class="glyphicon glyphicon-pencil"></span>
+		<div ng-controller="ctrlSal as app">
+			<h3>Modifier les salles de ce bâtiment</h3>
+			<table class="table">
+				<tr class="active">
+					<td>TYPE</td>
+					<td>QUANTITÉ</td>
+					<td>MODIFIER NB.</td>
+					<td>SUPPRIMER</td>
+				</tr>
+				<tr ng-repeat="sal in sals">
+					<td>{{sal.typ_sal_nom}}</td>
+					<td>{{sal.qte}}</td>
+					<td>
+						<form class="form-inline">
+							<input class="form-control" style="width: 60px" type="number" ng-model="sal.nouvQte">
+							<input type="hidden" ng-model="sal.id_sal">
+							<button class="btn btn-primary" ng-click="app.editQteSal(sal)">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</form>
+					</td>
+					<td>
+						<button ng-click="app.delSal(sal)" class="btn btn-danger">
+							<span class="glyphicon glyphicon-remove"></span>
 						</button>
-					</form>
-				</td>
-				<td>
-					<button ng-click="app.delSal(sal)" class="btn btn-danger">
-						<span class="glyphicon glyphicon-remove"></span>
-					</button>
-				</td>
-			</tr>
-		</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br><br>
+		<a href="#/{{bat.id_bat}}">
+			<button class="btn btn-primary">Retour à la page du bâtiment</button>
+		</a>
 	</div>
 </div>
