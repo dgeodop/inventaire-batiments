@@ -14,7 +14,7 @@ exports.editQte = function (req, res) {
 		client.query(query, [qte, idSal], function(err, result) {
 			done();
 			if(err) { return console.error('postsal.postQte', err); }
-			res.redirect('/api/sal/' + idEtabl + '/' + idBat);
+			res.redirect('/etb/' + idEtabl + '/api/sal/' + idBat);
 		});
 	});
 }
@@ -29,7 +29,7 @@ exports.delSal = function (req, res) {
 		client.query(query, [idSal], function(err, result) {
 			done();
 			if(err) { return console.error('postsal.delSal', err); }
-				res.redirect('/api/sal/' + idEtabl + '/' + idBat);
+				res.redirect('/etb/' + idEtabl + '/api/sal/' + idBat);
 		});
 	});
 }
@@ -46,7 +46,7 @@ exports.newSal = function (req, res) {
 		client.query(query, [idTyp, idBat, qte], function(err, result) {
 			done();
 			if(err) { return console.error('postsal.newSal', err); }
-				res.status(200).send({ status: "ok"});
+				res.redirect('/etb/' + idEtabl + '/api/sal/' + idBat);
 		});
 	});
 }

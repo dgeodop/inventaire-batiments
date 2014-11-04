@@ -10,7 +10,8 @@ ctrlNewBat.controller("ctrlAncienBatEtabl", function($scope,$http,$routeParams) 
 		var idBat = bat.id_bat;
 		$http.post("api/bat/" + idBat + "/add/ancien")
 			.success(function(data) {
-				window.location = "#/" + idEtabl + "/" + idBat;
+				console.log('redirect?');
+				window.location = "#/" + idBat;
 			})
 	}
 });
@@ -49,7 +50,8 @@ ctrlNewBat.controller("ctrlBatInLoc", function($scope,$http,$routeParams){
 ctrlNewBat.controller("ctrlNouveauBat", function($scope,$http,$routeParams){
 	var app = this;
 	app.choixNomBat = function(bat) {
-		$http.post("api/bat/add/nouveau", bat)
+		var nomBat = bat.nomBat;
+		$http.post("api/bat/add/nouveau/" + nomBat, bat)
 			.success(function(data) {
 				var idBat = data.id_bat;
 				window.location = "#/" + idBat + "/modif_adresse_bat";

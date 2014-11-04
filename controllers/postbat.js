@@ -1,6 +1,7 @@
 var pg = require('pg');
 var bd = require('../credentials/bd');
 var connectString = 'tcp://' + bd.username + ':' + bd.password + '@localhost/postgres';
+var bodyParser = require('body-parser');
 
 exports.delBat = function(req, res) {
 	var idBat = req.params.idBat;
@@ -16,7 +17,7 @@ exports.delBat = function(req, res) {
 				client.query(queryAddEvent, ['suppr_bat', idBat, idEtabl], function(err, result) {
 					done();
 					if(err) { return console.error('postbat.delBat.queryAddEvent', err); }
-					res.send('ok').status(200);
+					res.redirect('/etb/' + idEtabl + '/api/bat');
 				});
 			});
 		});
@@ -75,7 +76,7 @@ exports.addAutreEtablBat = function(req, res) {
 
 exports.addNewBat = function(req, res) {
 	var idEtabl = req.params.idEtabl;
-	var nomBat = req.body.nomBat;
+	var nomBat = req.params.nomBat;
 	var queryGetIdBat = 'SELECT max(id_bat) + 1 AS id_bat FROM bat';
 	var queryAddToBat = 'INSERT INTO bat (id_bat, nom_bat) VALUES ($1, $2);'
 	var queryGetIdBatDgeo = 'SELECT max(id_bat_dgeo) + 1 AS id_bat_dgeo FROM bat_dgeo WHERE id_etabl=$1';
@@ -98,7 +99,7 @@ exports.addNewBat = function(req, res) {
 						client.query(queryGetIdBatDgeo, [idEtabl], function(err, result) {
 							done();
 							if(err) { return console.error('postbat.addAutreEtablBat.queryGetIdBatDgeo', err); }
-							var idBatDgeo = result.rows[0].id_bat_dgeo;
+							var idBatDgeo = result.rows[0].id_bat_dgeo; 
 							pg.connect(connectString, function(err, client, done) {
 								client.query(queryAddToBatDgeo, [idBat, idBatDgeo, idEtabl], function(err, result) {
 									done();
@@ -136,7 +137,7 @@ exports.editNom = function(req, res) {
 				client.query(queryAddEvent, ['modif_nom', idBat, nom, idEtabl], function(err, result) {
 					done();
 					if(err) { return console.error('postbat.editNom.queryAddEvent', err); }
-					res.redirect('/api/bat/'+idEtabl+'/'+idBat);
+					res.redirect('/etb/'+idEtabl+'/api/bat/'+idBat);
 				});
 			});
 		});
@@ -146,7 +147,7 @@ exports.editNom = function(req, res) {
 exports.editAdr = function(req, res) {
 	var idEtabl = req.params.idEtabl;
 	var idBat = req.params.idBat;
-	var body = req.body;
+	var body = req.body; 
 	var rue = body.rue;
 	var rueNo = body.rue_no;
 	var npa = body.npa;
@@ -190,7 +191,7 @@ exports.editAnConstr = function(req, res) {
 				client.query(queryAddEvent, ['modif_an_constr', idBat, idEtabl], function(err, result) {
 					done();
 					if(err) { return console.error('postbat.editNom.queryAddEventAnC', err); }
-					res.redirect('/api/bat/'+idEtabl+'/'+idBat);
+					res.redirect('/etb/'+idEtabl+'/api/bat/'+idBat);
 				});
 			});
 		});
@@ -212,7 +213,7 @@ exports.editAnRenov = function(req, res) {
 				client.query(queryAddEvent, ['modif_an_constr', idBat, idEtabl], function(err, result) {
 					done();
 					if(err) { return console.error('postbat.editNom.queryAddEventAnR', err); }
-					res.redirect('/api/bat/'+idEtabl+'/'+idBat);
+					res.redirect('/etb/'+idEtabl+'/api/bat/'+idBat);
 				});
 			});
 		});
@@ -234,7 +235,7 @@ exports.editSite = function(req, res) {
 				client.query(queryAddEvent, ['modif_site', idBat, idEtabl], function(err, result) {
 					done();
 					if(err) { return console.error('postbat.editNom.queryAddEvent', err); }
-					res.redirect('/api/bat/'+idEtabl+'/'+idBat);
+					res.redirect('/etb/'+idEtabl+'/api/bat/'+idBat);
 				});
 			});
 		});

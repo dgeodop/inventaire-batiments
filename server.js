@@ -9,19 +9,20 @@ var auth = require('./auth');
 var app = express();
 
 //controllers
-
 var ctrlEtabl = require('./controllers/etabl');
 var ctrlBat = require('./controllers/bat');
 var ctrlPostBat = require('./controllers/postbat');
 var ctrlSal = require('./controllers/sal');
 var ctrlPostSal = require('./controllers/postsal');
 var ctrlAdr = require('./controllers/adr');
+var ctrlLogin = require('./controllers/login');
 
 //config
 app.set('views', './views');
 app.set('view engine', 'jade');
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(expressSession({ 
 	secret: 'key',
 	resave: false,
@@ -39,7 +40,7 @@ app.get('/etb/:idEtabl/', auth.check, function(req, res){
 });
 
 //login avec jade
-app.get('/login', function(req,res) { res.render('login'); });
+app.get('/login', ctrlLogin.loginView);
 app.post('/login', passport.authenticate('local'), function(req,res){
 	var idEtabl= req.user.id;
 	res.redirect('/etb/' + idEtabl + '/');
@@ -55,7 +56,7 @@ app.get('/etb/:idEtabl/api/batinloc/:nomLoc', ctrlBat.getAllBatInLoc);
 
 app.post('/etb/:idEtabl/api/bat/:idBat/add/ancien', ctrlPostBat.addAncienBat);
 app.post('/etb/:idEtabl/api/bat/:idBat/add/autretabl', ctrlPostBat.addAutreEtablBat);
-app.post('/etb/:idEtabl/api/bat/add/nouveau', ctrlPostBat.addNewBat);
+app.post('/etb/:idEtabl/api/bat/add/nouveau/:nomBat', ctrlPostBat.addNewBat);
 app.post('/etb/:idEtabl/api/bat/:idBat/del', ctrlPostBat.delBat);
 app.post('/etb/:idEtabl/api/bat/:idBat/nom', ctrlPostBat.editNom);
 app.post('/etb/:idEtabl/api/bat/:idBat/anconstr', ctrlPostBat.editAnConstr);

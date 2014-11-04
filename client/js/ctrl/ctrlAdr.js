@@ -2,7 +2,6 @@ var ctrlAdr = angular.module('ctrlAdr', []);
 
 ctrlAdr.controller("ctrlLoc", function($scope,$http,$routeParams){
 	var idBat = $routeParams.idBat;
-	$scope.idEtabl = idEtabl;
 	$scope.idBat = idBat;
 	$http.get("api/adr/loc")
 	.success(function(data) {
@@ -59,7 +58,6 @@ app.controller("ctrlAdrFin", function($scope,$http,$routeParams){
 		.success(function(data) {
 			$scope.adr = data[0];
 			$scope.adr.idBat = parseInt(idBat);
-			$scope.adr.idEtabl = parseInt(idEtabl);
 			app.adr = $scope.adr;
 		})
 	app.editAdr = function(adr) {

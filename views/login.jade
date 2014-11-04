@@ -1,7 +1,10 @@
 form(action="/login" method="post")
 	div
 		label Username:
-		input(type="text" name="username")
+		select(name="username" class="form-control")
+			- each etabl in etabls
+				option(value="#{etabl.id_etabl}")
+					= etabl.nom_court
 	div
 		label Password:
 		input(type="password" name="password")

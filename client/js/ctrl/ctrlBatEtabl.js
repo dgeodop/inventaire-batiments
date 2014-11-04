@@ -10,7 +10,7 @@ ctrlBatEtabl.controller("ctrlBatEtabl", function($scope,$http,$routeParams) {
 		var idBat = bat.id_bat;
 		$http.post("api/bat/" + idBat + "/del")
 			.success(function(data) {
-				window.location = "#/" + idEtabl;
+				$scope.bats = data;
 			})
 	}
 });

@@ -1,8 +1,8 @@
 <div class="col-md-12">
 	<div ng-controller="ctrlBat as edit">
 		<h2>{{bat.nom_bat}}</h2>
-		<div ng-controller="ctrlSalNotInBat as app">
-			<h3>Ajouter un type de salle</h3>
+		<div ng-controller="ctrlSal as app">
+			<h4>Ajouter un type de salle</h4>
 			<form class="form-inline">
 				<select class="form-control" ng-model="typsal.newTypSal">
 					<option ng-repeat="typsal in typsals" value="{{typsal.id_typ}}">
@@ -14,10 +14,8 @@
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 			</form>			
-		</div>
-		<br>
-		<div ng-controller="ctrlSal as app">
-			<h3>Modifier les salles de ce bâtiment</h3>
+			<br>
+			<h4>Modifier les salles de ce bâtiment</h4>
 			<table class="table">
 				<tr class="active">
 					<td>TYPE</td>
