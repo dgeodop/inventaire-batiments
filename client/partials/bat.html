@@ -1,10 +1,16 @@
-<div class="col-md-4 listbat">
-	<div ng-controller="ctrlBatEtabl">
-		<h4>Liste des bâtiments</h4>
-		<div ng-repeat="bat in bats">
-			<a href="#/{{bat.id_bat}}">
-				<p>{{bat.nom_bat}}</p>
-			</a>
+<div class="col-md-4">
+	<h4>
+		<a href="#/">
+			Liste des bâtiments
+		</a>
+	</h4>
+	<div class="listbat">
+		<div ng-controller="ctrlBatEtabl">
+			<div ng-repeat="bat in bats">
+				<a href="#/{{bat.id_bat}}">
+					<p>{{bat.nom_bat}}</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
@@ -38,27 +44,25 @@
 				<td class="active">LOCALITÉ</td><td>{{bat.localite}}</td>
 			</tr>
 		</table>
-	</div>
-	<div ng-controller="ctrlSal">
-		<h4>Salles
-			<a href="#/{{idBat}}/modif_salles_bat">
-				<button class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</button>
-			</a>
-		</h4>
-		<table class="table">
-			<tr class="active">
-				<td>TYPE</td>
-				<td>QUANTITÉ</td>
-			</tr>
-			<tr ng-repeat="sal in sals">
-				<td>{{sal.typ_sal_nom}}</td>
-				<td>{{sal.qte}}</td>
-			</tr>
-		</table>
-	</div>
-	<div ng-controller="ctrlBat">
+		<div ng-controller="ctrlSal">
+			<h4>Salles
+				<a href="#/{{idBat}}/modif_salles_bat">
+					<button class="btn btn-primary btn-sm">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</a>
+			</h4>
+			<table class="table">
+				<tr class="active">
+					<td>TYPE</td>
+					<td>QUANTITÉ</td>
+				</tr>
+				<tr ng-repeat="sal in sals">
+					<td>{{sal.typ_sal_nom}}</td>
+					<td>{{sal.qte}}</td>
+				</tr>
+			</table>
+		</div>
 		<h4>Année 
 			<a href="#/{{bat.id_bat}}/modif_annees_bat">
 				<button class="btn btn-primary btn-sm">

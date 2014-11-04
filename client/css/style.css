@@ -12,3 +12,8 @@ h2 a {
 .listbat {
 	background-color: #F0F0F0;
 }
+
+h4 a {
+	text-decoration: none;
+	color: black;
+}

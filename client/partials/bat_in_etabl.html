@@ -1,6 +1,10 @@
 <div ng-controller="ctrlBatEtabl">
+	<h4>
+		<a href="#/">
+			Liste des bâtiments
+		</a>
+	</h4>
 	<div class="col-md-4 listbat">
-		<h4>Liste des bâtiments</h4>
 		<div ng-repeat="bat in bats">
 			<a href="#/{{bat.id_bat}}">
 				<p>{{bat.nom_bat}}</p>
