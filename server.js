@@ -40,11 +40,10 @@ app.get('/etb/:idEtabl/', auth.check, function(req, res){
 });
 
 //login avec jade
+app.get('/', ctrlLogin.index);
 app.get('/login', ctrlLogin.loginView);
-app.post('/login', passport.authenticate('local'), function(req,res){
-	var idEtabl= req.user.id;
-	res.redirect('/etb/' + idEtabl + '/');
-});
+app.post('/login', passport.authenticate('local'), ctrlLogin.loginPost);
+app.get('/logout', ctrlLogin.logout);
 
 //api routes
 app.get('/api/etabl', ctrlEtabl.getAllEtabl);

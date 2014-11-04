@@ -14,3 +14,18 @@ exports.loginView = function (req, res) {
 		});
 	});
 }
+
+exports.loginPost = function(req,res){
+	var idEtabl = req.user.id;
+	res.redirect('/etb/' + idEtabl + '/');
+}
+
+exports.logout = function(req, res){
+	req.logout();
+	res.redirect('/');
+}
+
+exports.index = function(req, res) {
+	res.render('index');
+}
+
