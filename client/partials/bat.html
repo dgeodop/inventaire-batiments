@@ -16,20 +16,13 @@
 </div>
 <div class="col-md-8">
 	<div ng-controller="ctrlBat">
-		<h2>{{bat.nom_bat}} 
-			<a href="#/{{bat.id_bat}}/modif_nom_bat">
-				<button class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</button>
-			</a>
-		</h2>
-		<h4>Adresse 
-			<a href="#/{{bat.id_bat}}/modif_adresse_bat">
-				<button class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</button>
-			</a>
-		</h4>
+		<h2>{{bat.nom_bat}}</h2>
+		<a href="#/{{bat.id_bat}}/modif_nom_bat">
+			<button class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-pencil"></span> Modifier le nom
+			</button>
+		</a>
+		<h4>Adresse</h4>
 		<table class="table">
 			<tr>
 				<td class="active">RUE</td><td>{{bat.rue}}</td>
@@ -44,14 +37,13 @@
 				<td class="active">LOCALITÉ</td><td>{{bat.localite}}</td>
 			</tr>
 		</table>
+		<a href="#/{{bat.id_bat}}/modif_adresse_bat">
+			<button class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-pencil"></span> Modifier l'adresse
+			</button>
+		</a>
 		<div ng-controller="ctrlSal">
-			<h4>Salles
-				<a href="#/{{idBat}}/modif_salles_bat">
-					<button class="btn btn-primary btn-sm">
-						<span class="glyphicon glyphicon-pencil"></span>
-					</button>
-				</a>
-			</h4>
+			<h4>Salles</h4>
 			<table class="table">
 				<tr class="active">
 					<td>TYPE</td>
@@ -62,14 +54,13 @@
 					<td>{{sal.qte}}</td>
 				</tr>
 			</table>
-		</div>
-		<h4>Année 
-			<a href="#/{{bat.id_bat}}/modif_annees_bat">
-				<button class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-pencil"></span>
+			<a href="#/{{idBat}}/modif_salles_bat">
+				<button class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-pencil"></span> Modifier les salles
 				</button>
 			</a>
-		</h4>
+		</div>
+		<h4>Année</h4>
 		<table class="table">
 			<tr>
 				<td class="active">de construction</td><td>{{bat.annee_constr}}</td>
@@ -78,18 +69,22 @@
 				<td class="active">de rénovation</td><td>{{bat.annee_renov}}</td>
 			</tr>
 		</table>
-		<h4>Site 
-			<a href="#/{{bat.id_bat}}/modif_site_bat">
-				<button class="btn btn-primary btn-sm">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</button>
-			</a>
-		</h4>
+		<a href="#/{{bat.id_bat}}/modif_annees_bat">
+			<button class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-pencil"></span> Modifier les années
+			</button>
+		</a>
+		<h4>Site</h4>
 		<table class="table">
 			<tr>
 				<td class="active">Nom du site</td><td>{{bat.site}}</td>
 			</tr>
-		</table>			
+		</table>
+		<a href="#/{{bat.id_bat}}/modif_site_bat">
+			<button class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-pencil"></span> Modifier le site
+			</button>
+		</a>		
 	</div>
 </div>
 
