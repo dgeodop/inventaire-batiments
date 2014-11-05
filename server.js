@@ -38,6 +38,9 @@ app.use('/etb/:idEtabl/partials', express.static(__dirname + '/client/partials')
 app.get('/etb/:idEtabl/', auth.check, function(req, res){
 	res.sendFile(__dirname + '/client/index.html');
 });
+app.get('/etb/:idEtabl/geocode.html', auth.check, function(req, res){
+	res.sendFile(__dirname + '/client/geocode.html');
+});
 
 //login avec jade
 app.get('/', ctrlLogin.index);
@@ -47,6 +50,7 @@ app.get('/logout', ctrlLogin.logout);
 
 //api routes
 app.get('/api/etabl', ctrlEtabl.getAllEtabl);
+app.get('/etb/:idEtabl/api/etabl', ctrlEtabl.getId);
 app.get('/etb/:idEtabl/api/bat', ctrlBat.getAllBatOfEtabl);
 app.get('/etb/:idEtabl/api/ancienbat', ctrlBat.getAllAncienBatOfEtabl);
 app.get('/etb/:idEtabl/api/bat/:idBat', ctrlBat.getOne);
@@ -61,6 +65,7 @@ app.post('/etb/:idEtabl/api/bat/:idBat/nom', ctrlPostBat.editNom);
 app.post('/etb/:idEtabl/api/bat/:idBat/anconstr', ctrlPostBat.editAnConstr);
 app.post('/etb/:idEtabl/api/bat/:idBat/anrenov', ctrlPostBat.editAnRenov);
 app.post('/etb/:idEtabl/api/bat/:idBat/site', ctrlPostBat.editSite);
+app.post('/geo/api/bat/geo', ctrlPostBat.editGeo);
 
 app.get('/etb/:idEtabl/api/sal/:idBat', ctrlSal.getAllOfBat);
 app.get('/etb/:idEtabl/api/sal/:idBat/notinbat', ctrlSal.getAllNotInBat);
@@ -75,4 +80,5 @@ app.get('/etb/:idEtabl/api/adr/loc/:idLoc/rue/:idRue/no/:idRueNo', ctrlAdr.getAd
 app.post('/etb/:idEtabl/api/bat/:idBat/adr', ctrlPostBat.editAdr);
 
 //start server
-app.listen(3000, function() { console.log('Listening on 3000'); });
+var port = process.env.PORT || 3000;
+app.listen(port, function() { console.log('Listening on ' + port); });

@@ -6,13 +6,13 @@ block content
 			h4 Login
 			form(action="/login" method="post").form
 				div
-					label Username:
+					label Établissement:
 					select(name="username").form-control
 						- each etabl in etabls
 							option(value="#{etabl.id_etabl}")
 								= etabl.nom_court
 				div
-					label Password:
+					label Mot de passe:
 					input(type="password" name="password").form-control
 				br
 				div

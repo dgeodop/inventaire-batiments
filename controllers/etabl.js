@@ -14,3 +14,8 @@ exports.getAllEtabl = function (req, res) {
 		});
 	});
 }
+
+exports.getId = function(req,res) {
+	var idEtabl = req.params.idEtabl;
+	res.send({idEtabl: idEtabl});
+}

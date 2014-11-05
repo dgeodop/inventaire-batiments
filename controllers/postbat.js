@@ -241,3 +241,18 @@ exports.editSite = function(req, res) {
 		});
 	});
 }
+
+exports.editGeo = function(req, res) {
+	var lat = req.body.lat;
+	var lng = req.body.lng;
+	var idBat = req.body.id_bat;
+	var queryEditGeo = 'UPDATE bat SET lat=$1, lng=$2 WHERE id_bat=$3';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('erreur de connection au serveur', err); }
+		client.query(queryEditGeo, [lat, lng, idBat], function(err, result) {
+			done();
+			if(err) { return console.error('postbat.editGeo', err); }
+			res.send('ok').status(200);
+		});
+	});
+}

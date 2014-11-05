@@ -5,11 +5,16 @@ ctrlBat.controller("ctrlBat", function($scope, $http, $routeParams) {
 	$http.get("api/bat/" + idBat)
 		.success(function(data) {
 			$scope.bat = data[0];
-		})
+		});
+	$http.get("api/etabl/")
+		.success(function(data) {
+			$scope.etabl = data;
+		});
 	var edit = this;
 	edit.editNom = function(bat) {
 		$http.post("api/bat/" + idBat + "/nom", bat)
 			.success(function(data) {
+				console.log(bat);
 				$scope.bat = data[0];
 			})
 	}
