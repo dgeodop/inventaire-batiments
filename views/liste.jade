@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	a(href="/carte/#{idEtabl}")
+		button.btn.btn-primary voir les bâtiments sur une carte
+	br
+	br
+	table.table
+		tr.active
+			td ID
+			td NOM
+			td 
+		- each bat in bats
+			tr
+				td #{bat.id_bat_dgeo}
+				td #{bat.nom_bat}
+				td 
+					a(href="/liste/#{bat.id_bat}")
+						button.btn.btn-primary detail
+

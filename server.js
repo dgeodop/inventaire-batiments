@@ -32,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //client routes
+app.use('/leaflet', express.static(__dirname + '/client/leaflet'));
 app.use('/etb/:idEtabl/js', express.static(__dirname + '/client/js'));
 app.use('/etb/:idEtabl/css', express.static(__dirname + '/client/css'));
 app.use('/etb/:idEtabl/partials', express.static(__dirname + '/client/partials'));
@@ -47,6 +48,9 @@ app.get('/', ctrlLogin.index);
 app.get('/login', ctrlLogin.loginView);
 app.post('/login', passport.authenticate('local'), ctrlLogin.loginPost);
 app.get('/logout', ctrlLogin.logout);
+
+app.post('/liste', ctrlLogin.liste);
+app.get('/carte/:idEtabl', ctrlLogin.carte);
 
 //api routes
 app.get('/api/etabl', ctrlEtabl.getAllEtabl);

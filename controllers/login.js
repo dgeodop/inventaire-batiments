@@ -25,7 +25,44 @@ exports.logout = function(req, res){
 	res.redirect('/');
 }
 
-exports.index = function(req, res) {
-	res.render('index');
+exports.index = function (req, res) {
+	var query = 'SELECT id_etabl, nom_court FROM etabl WHERE util_dgeo=1 ORDER BY nom_court';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, false, function(err, result) {
+		  done();
+		  if(err) { return console.error('Problème avec la requête', err); }
+			var etabls=result.rows;
+			res.render('index', {etabls: etabls});
+		});
+	});
+}
+
+exports.liste = function(req, res) {
+	var idEtabl = req.body.id_etabl;
+	var query = 'SELECT bat.id_bat, id_bat_dgeo, bat.nom_bat FROM bat, bat_dgeo WHERE bat.id_bat=bat_dgeo.id_bat AND util=1 AND id_etabl=$1 ORDER BY nom_bat';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [idEtabl], function(err, result) {
+		  done();
+		  if(err) { return console.error('ctrlLogin.liste', err); }
+			var bats=result.rows;
+			res.render('liste', {bats: bats, idEtabl: idEtabl});
+		});
+	});
+}
+
+exports.carte = function(req, res) {
+	var idEtabl = req.params.idEtabl;
+	var query = 'SELECT id_bat_dgeo, bat.nom_bat, lat, lng FROM bat, bat_dgeo WHERE bat.id_bat=bat_dgeo.id_bat AND util=1 AND id_etabl=$1 ORDER BY nom_bat';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [idEtabl], function(err, result) {
+		  done();
+		  if(err) { return console.error('ctrlLogin.liste', err); }
+			var data = result.rows;
+			res.render('carte', {data:data});
+		});
+	});
 }
 

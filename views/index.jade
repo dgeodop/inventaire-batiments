@@ -2,3 +2,15 @@ extends layout
 
 block content
 	a(href='/login') Login établissement
+	br
+	br
+	h3 Voir tous les bâtiments d'un établissement
+	form(action="/liste" method="post").form-inline
+		div
+			label Choisir un établissement:
+			select(name="id_etabl").form-control
+				- each etabl in etabls
+					option(value="#{etabl.id_etabl}")
+						= etabl.nom_court
+			input(type="submit" value="voir les bâtiments").btn.btn-primary.form-control
+
