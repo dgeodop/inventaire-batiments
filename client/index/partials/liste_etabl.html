@@ -1,4 +1,15 @@
 <div ng-controller="ctrlBatEtabl">
+	<a href="/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<a href="/carte/{{idEtabl}}">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-map-marker"></span> Carte
+		</button>
+	</a>
+	<br><br>
 	<table class="table">
 		<tr class="active">
 			<td>ID</td>
@@ -9,7 +20,7 @@
 			<td>{{bat.id_bat_dgeo}}</td>
 			<td>{{bat.nom_bat}}</td>
 			<td>
-				<a href="#/detail/{{bat.id_bat}}">
+				<a href="#/detail/{{idEtabl}}/{{bat.id_bat}}">
 					<button class="btn btn-primary">Détail</button>
 				</a>
 			</td>

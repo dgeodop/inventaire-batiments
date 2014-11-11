@@ -1,0 +1,65 @@
+<div ng-controller="ctrlBat">
+	<a href="#/liste_etabl/{{idEtabl}}">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<a href="/carte_bat.html?lat={{bat.lat}}&lng={{bat.lng}}">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-map-marker"></span> Voir sur la carte
+		</button>
+	</a>
+	<h3>{{bat.nom_bat}}</h3>
+	<h4>Adresse</h4>
+	<table class="table">
+		<tr>
+			<td class="active">RUE</td>
+			<td>{{bat.rue}}</td>
+		</tr>
+		<tr>
+			<td class="active">NO. RUE</td>
+			<td>{{bat.no_rue}}</td>
+		</tr>
+		<tr>
+			<td class="active">NPA</td>
+			<td>{{bat.npa}}</td>
+		</tr>
+		<tr>
+			<td class="active">LOCALITE</td>
+			<td>{{bat.localite}}</td>
+		</tr>
+	</table>
+	<h4>Salles</h4>
+	<div ng-controller="ctrlSal">
+		<table class="table">
+			<tr class="active">
+				<td>TYPE</td>
+				<td>NOMBRE</td>
+			</tr>
+			<tr ng-repeat="sal in sals">
+				<td>{{sal.typ_sal_nom}}</td>
+				<td>{{sal.qte}}</td>
+			</tr>
+		</table>
+	</div>
+	<h4>Autre</h4>
+	<table class="table">
+		<tr>
+			<td class="active">SITE</td>
+			<td>{{bat.site}}</td>
+		</tr>
+		<tr>
+			<td class="active">ANNEE CONSTR.</td>
+			<td>{{bat.annee_constr}}</td>
+		</tr>
+		<tr>
+			<td class="active">ANNEE RENOV.</td>
+			<td>{{bat.annee_renov}}</td>
+		</tr>
+	</table>
+	<a href="#/liste_etabl/{{idEtabl}}">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+</div>

@@ -16,6 +16,9 @@ var ctrlSal = require('./controllers/sal');
 var ctrlPostSal = require('./controllers/postsal');
 var ctrlAdr = require('./controllers/adr');
 var ctrlLogin = require('./controllers/login');
+var ctrlCarte = require('./controllers/carte');
+var ctrlCtip = require('./controllers/ctip');
+var ctrlCtipBat = require('./controllers/ctipbat');
 
 //config
 app.set('views', './views');
@@ -36,7 +39,7 @@ app.get('/login', ctrlLogin.loginView);
 app.post('/login', passport.authenticate('local'), ctrlLogin.loginPost);
 app.get('/logout', ctrlLogin.logout);
 
-//lib clients
+//lib JS sclients
 app.use('/lib', express.static(__dirname + '/client/lib'));
 
 //client index
@@ -46,7 +49,10 @@ app.use('/partials', express.static(__dirname + '/client/index/partials'));
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/client/index/index.html');
 });
-app.get('/carte/:idEtabl', ctrlLogin.carte);
+app.get('/carte_bat.html', function(req, res){
+	res.sendFile(__dirname + '/client/index/carte.html');
+});
+app.get('/carte/:idEtabl', ctrlCarte.batOfEtabl);
 
 //client etb
 app.use('/etb/:idEtabl/js', express.static(__dirname + '/client/etb/js'));
@@ -89,6 +95,21 @@ app.get('/etb/:idEtabl/api/adr/loc/:idLoc', ctrlAdr.getRue);
 app.get('/etb/:idEtabl/api/adr/loc/:idLoc/rue/:idRue', ctrlAdr.getRueNo);
 app.get('/etb/:idEtabl/api/adr/loc/:idLoc/rue/:idRue/no/:idRueNo', ctrlAdr.getAdr);
 app.post('/etb/:idEtabl/api/bat/:idBat/adr', ctrlPostBat.editAdr);
+
+app.get('/ctip/nomreg', ctrlCtip.nomReg);
+app.post('/ctip/nomreg/:idReg', ctrlCtip.modifNomReg);
+app.get('/ctip/nometabl', ctrlCtip.nomEtabl);
+app.post('/ctip/nometabl/:idEtabl', ctrlCtip.modifNomEtabl);
+app.get('/ctip/nomreletabl', ctrlCtip.nomRelatifEtabl);
+app.post('/ctip/nomreletabl/:idEtabl', ctrlCtip.modifNomRelatifEtabl);
+
+app.get('/ctip/event', ctrlCtipBat.eventModif);
+app.get('/ctip/nonombat', ctrlCtipBat.noNomBat);
+app.get('/ctip/tousbat', ctrlCtipBat.tousBat);
+app.post('/ctip/nomcourt', ctrlCtipBat.modifNomCourt);
+app.post('/ctip/ajoutnomcourt', ctrlCtipBat.ajoutNomCourt);
+app.post('/ctip/comment', ctrlCtipBat.comment);
+app.post('/ctip/clitin', ctrlCtipBat.clItin);
 
 //start server
 var port = process.env.PORT || 3000;
