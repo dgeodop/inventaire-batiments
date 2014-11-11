@@ -31,26 +31,33 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//client routes
-app.use('/leaflet', express.static(__dirname + '/client/leaflet'));
-app.use('/etb/:idEtabl/js', express.static(__dirname + '/client/js'));
-app.use('/etb/:idEtabl/css', express.static(__dirname + '/client/css'));
-app.use('/etb/:idEtabl/partials', express.static(__dirname + '/client/partials'));
-app.get('/etb/:idEtabl/', auth.check, function(req, res){
-	res.sendFile(__dirname + '/client/index.html');
-});
-app.get('/etb/:idEtabl/geocode.html', auth.check, function(req, res){
-	res.sendFile(__dirname + '/client/geocode.html');
-});
-
 //login avec jade
-app.get('/', ctrlLogin.index);
 app.get('/login', ctrlLogin.loginView);
 app.post('/login', passport.authenticate('local'), ctrlLogin.loginPost);
 app.get('/logout', ctrlLogin.logout);
 
-app.post('/liste', ctrlLogin.liste);
+//lib clients
+app.use('/lib', express.static(__dirname + '/client/lib'));
+
+//client index
+app.use('/js', express.static(__dirname + '/client/index/js'));
+app.use('/css', express.static(__dirname + '/client/index/css'));
+app.use('/partials', express.static(__dirname + '/client/index/partials'));
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/client/index/index.html');
+});
 app.get('/carte/:idEtabl', ctrlLogin.carte);
+
+//client etb
+app.use('/etb/:idEtabl/js', express.static(__dirname + '/client/etb/js'));
+app.use('/etb/:idEtabl/css', express.static(__dirname + '/client/etb/css'));
+app.use('/etb/:idEtabl/partials', express.static(__dirname + '/client/etb/partials'));
+app.get('/etb/:idEtabl/', auth.check, function(req, res){
+	res.sendFile(__dirname + '/client/etb/index.html');
+});
+app.get('/etb/:idEtabl/geocode.html', auth.check, function(req, res){
+	res.sendFile(__dirname + '/client/etb/geocode.html');
+});
 
 //api routes
 app.get('/api/etabl', ctrlEtabl.getAllEtabl);

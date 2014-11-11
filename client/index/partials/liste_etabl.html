@@ -1,0 +1,18 @@
+<div ng-controller="ctrlBatEtabl">
+	<table class="table">
+		<tr class="active">
+			<td>ID</td>
+			<td>NOM</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="bat in bats">
+			<td>{{bat.id_bat_dgeo}}</td>
+			<td>{{bat.nom_bat}}</td>
+			<td>
+				<a href="#/detail/{{bat.id_bat}}">
+					<button class="btn btn-primary">Détail</button>
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>

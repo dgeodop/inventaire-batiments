@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body ng-app="appIndex">
+<div id="header" class="navbar navbar-default">
+	<div class="navbar-brand">
+		Inventaire des bâtiments
+	</div>
+	<div class="navbar-right">
+		<a href="/login">
+			<button class="btn btn-default btn-sm">Login</button>
+		</a>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div ng-view></div>
+	</div>
+	<br><br><br>
+</div>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/ctrl/ctrlEtabl.js"></script>
+<script src="js/ctrl/ctrlBatEtabl.js"></script>
+<script src="js/ctrl/ctrlBat.js"></script>
+<script src="js/ctrl/ctrlSal.js"></script>
+</body>
+</html>
