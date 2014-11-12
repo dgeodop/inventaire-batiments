@@ -1,0 +1,22 @@
+<div ng-controller="ctrlPasNomBat as app">
+	<table class="table">
+		<tr class="active">
+			<td>ID</td>
+			<td>NOM</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="bat in bats">
+			<td>{{bat.id_bat_dgeo}}</td>
+			<td>{{bat.nom_bat}}</td>
+			<td>
+				<form class="form-inline">
+					<input type="hidden" ng-model="bat.id_bat">
+					<input type="text" ng-model="bat.nouvNomCtip">
+					<button class="btn btn-primary" ng-click="app.ajoutNomCtip(bat)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>	
+				</form>		
+			</td>
+		</tr>
+	</table>
+</div>

@@ -4,7 +4,8 @@
 var app = angular.module('appCtip',  [
 	'ngRoute',
 	'routes',
-	'ctrlEventNom'
+	'ctrlEventNom',
+	'ctrlPasNomBat'
 ]);
 
 

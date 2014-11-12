@@ -43,7 +43,7 @@ exports.tousBat = function(req, res) {
 
 exports.modifNomCourt = function(req, res) {
 	var idBat = req.params.idBat;
-	var nomBat = req.body.nom_court;
+	var nomBat = req.body.nouvNomCtip;
 	var query1 = 'UPDATE bat SET ctip_bat_nom=$1 WHERE id_bat=$2';
 	var query2 = 'UPDATE event SET vu=1 WHERE id_bat=$1';
 	pg.connect(connectString, function(err, client, done) {
@@ -56,7 +56,7 @@ exports.modifNomCourt = function(req, res) {
 				client.query(query2, [idBat], function(err, result) {
 					done();
 					if(err) { return console.error('ctrlCtipBat.modifNomCourt.query2', err); }
-					res.redirect('/event');
+					res.redirect('/ctip/nonombat');
 				});
 			});
 		});
