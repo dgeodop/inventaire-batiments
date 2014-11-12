@@ -114,6 +114,7 @@ app.post('/ctip/nomreletabl/:idEtabl', ctrlCtip.modifNomRelatifEtabl);
 app.get('/ctip/event', ctrlCtipBat.eventModif);
 app.get('/ctip/nonombat', ctrlCtipBat.noNomBat);
 app.get('/ctip/tousbat', ctrlCtipBat.tousBat);
+app.get('/ctip/unbat/:idBat', ctrlCtipBat.unBat);
 app.post('/ctip/nomcourt/:idBat', ctrlCtipBat.modifNomCourt);
 app.post('/ctip/vu/:idBat', ctrlCtipBat.vu);
 app.post('/ctip/ajoutnomcourt/:idBat', ctrlCtipBat.ajoutNomCourt);

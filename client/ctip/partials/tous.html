@@ -1,0 +1,39 @@
+<div ng-controller="ctrlTous">
+	<input ng-model="recherche" placeholder="recherche">
+	<table class="table">
+		<tr>
+			<td>ID</td>
+			<td>NOM</td>
+			<td>UTIL</td>
+			<td>NOM COURT</td>
+			<td>COMMENT</td>
+			<td>CL.ITIN.</td>
+		</tr>
+		<tr ng-repeat="bat in bats | filter:recherche">
+			<td>{{bat.id_bat_dgeo}}</td>
+			<td>{{bat.nom_bat}}</td>
+			<td>{{bat.util}}</td>
+			<td>
+				<a href="#/nomcourt/{{bat.id_bat}}">
+					<button class="btn btn-primary">
+						<span class="glyphicon glyphicon-home"></span>
+					</button>
+				</a>
+			</td>
+			<td>
+				<a href="#/comment/{{bat.id_bat_dgeo}}">
+					<button class="btn btn-primary">
+						<span class="glyphicon glyphicon-tag"></span>
+					</button>
+				</a>
+			</td>
+			<td>
+				<a href="#/clitin/{{bat.id_bat_dgeo}}">
+					<button class="btn btn-primary">
+						<span class="glyphicon glyphicon-random"></span>
+					</button>
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>

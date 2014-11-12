@@ -41,6 +41,20 @@ exports.tousBat = function(req, res) {
 	});
 }
 
+exports.unBat = function(req, res) {
+	var idBat = req.params.idBat;
+	var query = 'SELECT bat.id_bat, id_bat_dgeo, nom_bat, ctip_bat_nom, util, ctip_comment, ctip_cl_itin FROM bat, bat_dgeo WHERE bat.id_bat=bat_dgeo.id_bat AND id_bat_dgeo=$1';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [idBat], function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtipBat.tousBat', err); }
+			var bat = result.rows[0];
+			res.send(bat);
+		});
+	});
+}
+
 exports.modifNomCourt = function(req, res) {
 	var idBat = req.params.idBat;
 	var nomBat = req.body.nouvNomCtip;
