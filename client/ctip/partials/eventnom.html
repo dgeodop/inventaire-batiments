@@ -1,0 +1,35 @@
+<div ng-controller="ctrlEventNom as app">
+	<table class="table">
+		<tr class="active">
+			<td>EVENT</td>
+			<td>DATE</td>
+			<td>NOM</td>
+			<td>NOM COURT</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="event in events">
+			<td>{{event.typ_event | date:format:'shortDate'}}</td>
+			<td>{{event.date_modif}}</td>
+			<td>{{event.nom_bat}}</td>
+			<td>{{event.ctip_bat_nom}}</td>
+			<td>
+				<form class="form-inline">
+					<input type="hidden" ng-model="event.id_bat">
+					<button class="btn btn-success" ng-click="app.setVu(event)">
+						<span class="glyphicon glyphicon-ok"></span>					
+					</button>	
+				</form>		
+			</td>
+			<td>
+				<form class="form-inline">
+					<input type="hidden" ng-model="event.id_bat">
+					<input type="text" ng-model="event.nouvNomCtip">
+					<button class="btn btn-primary" ng-click="app.modifNomCtip(event)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>	
+				</form>		
+			</td>
+		</tr>
+	</table>
+</div>

@@ -65,6 +65,14 @@ app.get('/etb/:idEtabl/geocode.html', auth.check, function(req, res){
 	res.sendFile(__dirname + '/client/etb/geocode.html');
 });
 
+//client ctip
+app.use('/ctip/js', express.static(__dirname + '/client/ctip/js'));
+app.use('/ctip/css', express.static(__dirname + '/client/ctip/css'));
+app.use('/ctip/partials', express.static(__dirname + '/client/ctip/partials'));
+app.get('/ctip/', function(req, res){
+	res.sendFile(__dirname + '/client/ctip/index.html');
+});
+
 //api routes
 app.get('/api/etabl', ctrlEtabl.getAllEtabl);
 app.get('/etb/:idEtabl/api/etabl', ctrlEtabl.getId);
@@ -107,7 +115,8 @@ app.get('/ctip/event', ctrlCtipBat.eventModif);
 app.get('/ctip/nonombat', ctrlCtipBat.noNomBat);
 app.get('/ctip/tousbat', ctrlCtipBat.tousBat);
 app.post('/ctip/nomcourt', ctrlCtipBat.modifNomCourt);
-app.post('/ctip/ajoutnomcourt', ctrlCtipBat.ajoutNomCourt);
+app.post('/ctip/vu/:idBat', ctrlCtipBat.vu);
+app.post('/ctip/ajoutnomcourt/:idBat', ctrlCtipBat.ajoutNomCourt);
 app.post('/ctip/comment', ctrlCtipBat.comment);
 app.post('/ctip/clitin', ctrlCtipBat.clItin);
 

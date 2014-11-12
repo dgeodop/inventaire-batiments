@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body ng-app="appCtip">
+<div id="header" class="navbar navbar-default">
+	<div class="navbar-brand">
+		Inventaire des bâtiments
+	</div>
+	<div class="navbar-right">
+		<a href="/login">
+			<button class="btn btn-default btn-sm">Login</button>
+		</a>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div ng-view></div>
+	</div>
+	<br><br><br>
+</div>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/ctrl/ctrlEventNom.js"></script>
+</body>
+</html>
