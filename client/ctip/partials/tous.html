@@ -1,7 +1,14 @@
 <div ng-controller="ctrlTous">
-	<input ng-model="recherche" placeholder="recherche">
+	<a href="/ctip/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<br><br>
+	<input ng-model="recherche" placeholder="recherche" class="form-control">
+	<br><br>
 	<table class="table">
-		<tr>
+		<tr class="active">
 			<td>ID</td>
 			<td>NOM</td>
 			<td>UTIL</td>

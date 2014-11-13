@@ -1,10 +1,16 @@
 <div ng-controller="ctrlClItin as app">
+	<a href="/ctip/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<br><br>
 	<p>ID: <strong>{{bat.id_bat_dgeo}}</strong></p>
 	<p>NOM: <strong>{{bat.nom_bat}}</strong></p>
 	<p>CL.ITIN. ACTUELLE: <strong>{{bat.ctip_cl_itin}}</strong></p>
 	<p>
 		<form class="form-inline">
-			<input type="text" ng-model="bat.nouvClItin">
+			<input type="text" class="form-control" ng-model="bat.nouvClItin">
 			<button class="btn btn-primary" ng-click="app.modifClItin(bat)">
 				Remplacer classe itinérante
 			</button>
