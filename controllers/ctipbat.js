@@ -100,29 +100,29 @@ exports.ajoutNomCourt = function(req, res) {
 }
 
 exports.comment = function(req, res) {
-	var comment = req.body.comment;
-	var idBatDgeo = req.body.idBatDgeo;
+	var comment = req.body.nouvComment;
+	var idBatDgeo = req.body.id_bat_dgeo;;
 	var query = 'UPDATE bat_dgeo SET ctip_comment=$1 WHERE id_bat_dgeo=$2';
 	pg.connect(connectString, function(err, client, done) {
 		if(err) { return console.error('Problème de connection à la base de données', err); }
 		client.query(query, [comment, idBatDgeo], function(err, result) {
 			done();
 			if(err) { return console.error('ctrlCtipBat.comment', err); }
-			res.redirect('/ctip/tousbat');
+			res.redirect('/ctip/unBat/' + idBatDgeo);
 		});
 	});
 }
 
 exports.clItin = function(req, res) {
-	var clItin = req.body.clItin;
-	var idBatDgeo = req.body.idBatDgeo;
+	var clItin = req.body.nouvClItin;
+	var idBatDgeo = req.body.id_bat_dgeo;
 	var query = 'UPDATE bat_dgeo SET ctip_cl_itin=$1 WHERE id_bat_dgeo=$2';
 	pg.connect(connectString, function(err, client, done) {
 		if(err) { return console.error('Problème de connection à la base de données', err); }
 		client.query(query, [clItin, idBatDgeo], function(err, result) {
 			done();
 			if(err) { return console.error('ctrlCtipBat.clitin', err); }
-			res.redirect('/ctip/tousbat');
+			res.redirect('/ctip/unBat/' + idBatDgeo);
 		});
 	});
 }
