@@ -43,12 +43,26 @@ exports.tousBat = function(req, res) {
 
 exports.unBat = function(req, res) {
 	var idBat = req.params.idBat;
-	var query = 'SELECT bat.id_bat, id_bat_dgeo, nom_bat, ctip_bat_nom, util, ctip_comment, ctip_cl_itin FROM bat, bat_dgeo WHERE bat.id_bat=bat_dgeo.id_bat AND id_bat_dgeo=$1';
+	var query = 'SELECT id_bat, nom_bat, ctip_bat_nom FROM bat WHERE id_bat=$1';
 	pg.connect(connectString, function(err, client, done) {
 		if(err) { return console.error('Problème de connection à la base de données', err); }
 		client.query(query, [idBat], function(err, result) {
 			done();
-			if(err) { return console.error('ctrlCtipBat.tousBat', err); }
+			if(err) { return console.error('ctrlCtipBat.unBat', err); }
+			var bat = result.rows[0];
+			res.send(bat);
+		});
+	});
+}
+
+exports.unBatDgeo = function(req, res) {
+	var idBatDgeo = req.params.idBatDgeo;
+	var query = 'SELECT bat.id_bat, id_bat_dgeo, nom_bat, ctip_comment, ctip_cl_itin FROM bat, bat_dgeo WHERE bat.id_bat=bat_dgeo.id_bat AND id_bat_dgeo=$1';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [idBatDgeo], function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtipBat.unBatDgeo', err); }
 			var bat = result.rows[0];
 			res.send(bat);
 		});
@@ -108,7 +122,7 @@ exports.comment = function(req, res) {
 		client.query(query, [comment, idBatDgeo], function(err, result) {
 			done();
 			if(err) { return console.error('ctrlCtipBat.comment', err); }
-			res.redirect('/ctip/unBat/' + idBatDgeo);
+			res.redirect('/ctip/unbatdgeo/' + idBatDgeo);
 		});
 	});
 }
@@ -122,7 +136,21 @@ exports.clItin = function(req, res) {
 		client.query(query, [clItin, idBatDgeo], function(err, result) {
 			done();
 			if(err) { return console.error('ctrlCtipBat.clitin', err); }
-			res.redirect('/ctip/unBat/' + idBatDgeo);
+			res.redirect('/ctip/unbatdgeo/' + idBatDgeo);
+		});
+	});
+}
+
+exports.modifNomCourt2 = function(req, res) {
+	var idBat = req.body.id_bat;
+	var nomBat = req.body.nouvNomCourt;
+	var query1 = 'UPDATE bat SET ctip_bat_nom=$1 WHERE id_bat=$2';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query1, [nomBat, idBat], function(err, result) {
+			done();
+			if(err) { return console.error('Problème avec la requête', err); }
+			res.redirect('/ctip/unbat/' + idBat)
 		});
 	});
 }

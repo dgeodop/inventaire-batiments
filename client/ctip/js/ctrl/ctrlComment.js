@@ -4,7 +4,7 @@ ctrlComment.controller("ctrlComment", function($http, $scope, $routeParams){
 	var idBat = $routeParams.idBat;
 	$scope.idBat = idBat;
 	var app = this;
-	$http.get('/ctip/unBat/' + idBat)
+	$http.get('/ctip/unbatdgeo/' + idBat)
 	.success(function(data) {
 		$scope.bat = data;	
 		app.modifComment = function(bat) {

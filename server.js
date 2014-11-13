@@ -114,12 +114,14 @@ app.post('/ctip/nomreletabl/:idEtabl', ctrlCtip.modifNomRelatifEtabl);
 app.get('/ctip/event', ctrlCtipBat.eventModif);
 app.get('/ctip/nonombat', ctrlCtipBat.noNomBat);
 app.get('/ctip/tousbat', ctrlCtipBat.tousBat);
+app.get('/ctip/unbatdgeo/:idBatDgeo', ctrlCtipBat.unBatDgeo);
 app.get('/ctip/unbat/:idBat', ctrlCtipBat.unBat);
 app.post('/ctip/nomcourt/:idBat', ctrlCtipBat.modifNomCourt);
 app.post('/ctip/vu/:idBat', ctrlCtipBat.vu);
 app.post('/ctip/ajoutnomcourt/:idBat', ctrlCtipBat.ajoutNomCourt);
 app.post('/ctip/comment', ctrlCtipBat.comment);
 app.post('/ctip/clitin', ctrlCtipBat.clItin);
+app.post('/ctip/nomcourt2', ctrlCtipBat.modifNomCourt2);
 
 //start server
 var port = process.env.PORT || 3000;
