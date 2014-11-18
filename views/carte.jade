@@ -6,6 +6,7 @@ html
 	body
 		div(id="map" style="height: 500px")
 		script.
+			var idEtabl = #{idEtabl};
 			var map = L.map('map');
 			L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 				attribution: '<a href="http://www.openstreetmap.org">OpenStreetMap</a>'
@@ -14,7 +15,7 @@ html
 			var points =!{JSON.stringify(data)};
 			for (var i = 0; i < points.length; i++) {
 			marker = new L.marker([points[i].lat,points[i].lng])
-			.bindPopup(points[i].nom_bat)
+			.bindPopup('<b><a href="/#/detail/' + idEtabl + '/' + points[i].id_bat + '">' + points[i].nom_bat + '</a></b>')
 			.addTo(group);
 			}
 			map.fitBounds(group.getBounds());

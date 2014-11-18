@@ -41,7 +41,7 @@ $.extend({
 	var id_bat= $.getUrlVar('id_bat');
 	var id_etabl= $.getUrlVar('id_etabl');
 
-var map = L.map('map').setView([lat, lng], 10);
+var map = L.map('map').setView([lat, lng], 15);
 
 L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: 'OpenStreetMap'}).addTo(map);
 
