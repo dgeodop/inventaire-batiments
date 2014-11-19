@@ -1,0 +1,22 @@
+<div ng-controller="ctrlDernieresModifs">
+	<a href="/ctip/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<h3>Les 20 dernières modifications</h3>
+	<table class="table">
+		<tr class="active">
+			<td>TYPE</td>
+			<td>ID_BAT</td>
+			<td>ETABL.</td>
+			<td>DATE</td>
+		</tr>
+		<tr ng-repeat="modif in modifs">
+			<td>{{modif.typ_event}}</td>
+			<td>{{modif.id_bat}}</td>
+			<td>{{modif.id_etabl}}</td>
+			<td>{{modif.date}}</td>
+		</tr>
+	</table>
+</div>

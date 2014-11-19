@@ -1,0 +1,20 @@
+<div ng-controller="ctrlModifsParEtabl">
+	<a href="/ctip/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<h3>Modifications par établissement</h3>
+	<table class="table">
+		<tr class="active">
+			<td>ID</td>
+			<td>NOM</td>
+		</tr>
+		<tr ng-repeat="etabl in etabls">
+			<td>{{etabl.id_etabl}}</td>
+			<td>
+				<a href="#/modifsparetabl/{{etabl.id_etabl}}">{{etabl.nom_court}}</a>
+			</td>
+		</tr>
+	</table>
+</div>

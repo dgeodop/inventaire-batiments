@@ -1,0 +1,18 @@
+<div ng-controller="ctrlModifsParType">
+	<a href="/ctip/">
+		<button class="btn btn-default">
+			<span class="glyphicon glyphicon-step-backward"></span> Retour
+		</button>
+	</a>
+	<h3>Modifications par type de modification</h3>
+	<table class="table">
+		<tr class="active">
+			<td>TYPE</td>
+		</tr>
+		<tr ng-repeat="type in types">
+			<td>
+				<a href="#/modifspartype/{{type.typ_event}}">{{type.typ_event}}</a>
+			</td>
+		</tr>
+	</table>
+</div>

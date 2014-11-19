@@ -131,7 +131,7 @@ exports.modifsParEtabl = function(req, res) {
 		client.query(query, [idEtabl], function(err, result) {
 			done();
 			if(err) { return console.error('ctrlCtip.modifsParEtabl', err); }
-			var event = result.rows;
+			var events = result.rows;
 			res.send(events);
 		});
 	});

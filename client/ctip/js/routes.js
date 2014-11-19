@@ -13,5 +13,10 @@ routes.config(['$routeProvider',
 	.when('/etablnomcourt', {templateUrl: 'partials/etablnomcourt.html'})
 	.when('/etablnomrelatif', {templateUrl: 'partials/etablnomrelatif.html'})
 	.when('/regnomcourt', {templateUrl: 'partials/regnomcourt.html'})
+	.when('/dernieresmodifs', {templateUrl: 'partials/dernieresmodifs.html'})
+	.when('/modifsparetabl', {templateUrl: 'partials/modifsparetabl.html'})
+	.when('/modifsparetabl/:idEtabl', {templateUrl: 'partials/modifsparetablvue.html'})
+	.when('/modifspartype', {templateUrl: 'partials/modifspartype.html'})
+	.when('/modifspartype/:typEvent', {templateUrl: 'partials/modifspartypevue.html'})
  	.otherwise({redirectTo: '/'});
  }]);

@@ -12,7 +12,12 @@ var app = angular.module('appCtip',  [
 	'ctrlNomCourt',
 	'ctrlEtablNomCourt',
 	'ctrlEtablNomRelatif',
-	'ctrlRegNomCourt'
+	'ctrlRegNomCourt',
+	'ctrlDernieresModifs',
+	'ctrlModifsParEtabl',
+	'ctrlModifsParType',
+	'ctrlModifsParEtablVue',
+	'ctrlModifsParTypeVue'
 ]);
 
 

@@ -1,0 +1,15 @@
+<div ng-controller="ctrlModifsParEtablVue">
+	<h3>ID_ETABL: {{etabl}}</h3>
+	<table class="table">
+		<tr class="active">
+			<td>TYPE</td>
+			<td>ID_BAT</td>
+			<td>DATE</td>
+		</tr>
+		<tr ng-repeat="event in events">
+			<td>{{event.typ_event}}</td>
+			<td>{{event.id_bat}}</td>
+			<td>{{event.date}}</td>
+		</tr>
+	</table>
+</div>
