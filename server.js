@@ -110,6 +110,10 @@ app.get('/ctip/nometabl', ctrlCtip.nomEtabl);
 app.post('/ctip/nometabl/:idEtabl', ctrlCtip.modifNomEtabl);
 app.get('/ctip/nomreletabl', ctrlCtip.nomRelatifEtabl);
 app.post('/ctip/nomreletabl/:idEtabl', ctrlCtip.modifNomRelatifEtabl);
+app.get('/ctip/modifs', ctrlCtip.modifs);
+app.get('/ctip/modifsTypes', ctrlCtip.modifsTypes);
+app.get('/ctip/modifsParType/:typEvent', ctrlCtip.modifsParType);
+app.get('/ctip/modifsParEtabl/:idEtabl', ctrlCtip.modifsParEtabl);
 
 app.get('/ctip/event', ctrlCtipBat.eventModif);
 app.get('/ctip/nonombat', ctrlCtipBat.noNomBat);
@@ -123,6 +127,7 @@ app.post('/ctip/comment', ctrlCtipBat.comment);
 app.post('/ctip/clitin', ctrlCtipBat.clItin);
 app.post('/ctip/nomcourt2', ctrlCtipBat.modifNomCourt2);
 
-//start server
+
+//démarrer server
 var port = process.env.PORT || 3000;
 app.listen(port, function() { console.log('Listening on ' + port); });

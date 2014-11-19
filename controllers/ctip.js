@@ -83,5 +83,62 @@ exports.modifNomRelatifEtabl = function(req, res) {
 	});
 }
 
+exports.modifs = function(req, res) {
+	var query = 'SELECT * FROM event ORDER BY date DESC LIMIT 20';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, null, function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtip.modifs', err); }
+			var events = result.rows;
+			res.send(events);
+		});
+	});
+}
+
+exports.modifsTypes = function(req, res) {
+	var query = 'SELECT DISTINCT typ_event FROM event ORDER BY typ_event';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, null, function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtip.modifsTypes', err); }
+			var types = result.rows;
+			res.send(types);
+		});
+	});
+}
+
+exports.modifsParType = function(req, res) {
+	var typEvent = req.params.typEvent;
+	var query = 'SELECT * FROM event WHERE typ_event=$1 ORDER BY date DESC LIMIT 100';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [typEvent], function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtip.modifsParTypes', err); }
+			var events = result.rows;
+			res.send(events);
+		});
+	});
+}
+
+exports.modifsParEtabl = function(req, res) {
+	var idEtabl = req.params.idEtabl;
+	var query = 'SELECT * FROM event WHERE id_etabl=$1 ORDER BY date DESC LIMIT 100';
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('Problème de connection à la base de données', err); }
+		client.query(query, [idEtabl], function(err, result) {
+			done();
+			if(err) { return console.error('ctrlCtip.modifsParEtabl', err); }
+			var event = result.rows;
+			res.send(events);
+		});
+	});
+}
+
+
+
+
 
 
