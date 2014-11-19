@@ -1,4 +1,4 @@
-<div ng-controller="ctrlEtablNomRelatif">
+<div ng-controller="ctrlEtablNomRelatif as app">
 	<table class="table">
 		<tr class="active">
 			<td>NOM</td>
@@ -8,7 +8,14 @@
 		<tr ng-repeat="etabl in etabls">
 			<td>{{etabl.nom_court}}</td>
 			<td>{{etabl.ctip_nom_relatif}}</td>
-			<td></td>
+			<td>
+				<form class="form-inline">
+					<input class="form-control" type="text" ng-model="etabl.nomRelatif">
+					<button class="btn btn-primary" ng-click="app.modifNomRelatif(etabl)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</form>
+			</td>
 		</tr>
 	</table>
 </div>

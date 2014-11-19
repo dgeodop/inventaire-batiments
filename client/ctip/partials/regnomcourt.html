@@ -1,4 +1,4 @@
-<div ng-controller="ctrlRegNomCourt">
+<div ng-controller="ctrlRegNomCourt as app">
 	<table class="table">
 		<tr class="active">
 			<td>NOM</td>
@@ -8,7 +8,14 @@
 		<tr ng-repeat="reg in regs">
 			<td>{{reg.nom_reg}}</td>
 			<td>{{reg.ctip_nom_reg}}</td>
-			<td></td>
+			<td>
+				<form class="form-inline">
+					<input class="form-control" type="text" ng-model="reg.nomRegCtip">
+					<button class="btn btn-primary" ng-click="app.modifNomCourt(reg)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</form>
+			</td>
 		</tr>
 	</table>
 </div>
