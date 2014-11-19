@@ -1,0 +1,14 @@
+<div ng-controller="ctrlEtablNomCourt">
+	<table class="table">
+		<tr class="active">
+			<td>NOM</td>
+			<td>NOM COURT</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="etabl in etabls">
+			<td>{{etabl.nom_court}}</td>
+			<td>{{etabl.ctip_nom_court}}</td>
+			<td></td>
+		</tr>
+	</table>
+</div>

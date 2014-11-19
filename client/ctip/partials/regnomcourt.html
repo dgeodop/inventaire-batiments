@@ -1,0 +1,14 @@
+<div ng-controller="ctrlRegNomCourt">
+	<table class="table">
+		<tr class="active">
+			<td>NOM</td>
+			<td>NOM COURT</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="reg in regs">
+			<td>{{reg.nom_reg}}</td>
+			<td>{{reg.ctip_nom_reg}}</td>
+			<td></td>
+		</tr>
+	</table>
+</div>

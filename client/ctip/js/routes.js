@@ -10,5 +10,8 @@ routes.config(['$routeProvider',
 	.when('/comment/:idBat', {templateUrl: 'partials/comment.html'})
 	.when('/clitin/:idBat', {templateUrl: 'partials/clitin.html'})
 	.when('/nomcourt/:idBat', {templateUrl: 'partials/nomcourt.html'})
+	.when('/etablnomcourt', {templateUrl: 'partials/etablnomcourt.html'})
+	.when('/etablnomrelatif', {templateUrl: 'partials/etablnomrelatif.html'})
+	.when('/regnomcourt', {templateUrl: 'partials/regnomcourt.html'})
  	.otherwise({redirectTo: '/'});
  }]);

@@ -9,7 +9,10 @@ var app = angular.module('appCtip',  [
 	'ctrlTous',
 	'ctrlComment',
 	'ctrlClItin',
-	'ctrlNomCourt'
+	'ctrlNomCourt',
+	'ctrlEtablNomCourt',
+	'ctrlEtablNomRelatif',
+	'ctrlRegNomCourt'
 ]);
 
 
