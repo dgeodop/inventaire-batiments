@@ -14,7 +14,7 @@ html
 			var group = L.featureGroup([]).addTo(map);
 			var points =!{JSON.stringify(data)};
 			for (var i = 0; i < points.length; i++) {
-			marker = new L.marker([points[i].lat,points[i].lng])
+			marker = new L.marker(L.latLng([points[i].lat,points[i].lng]))
 			.bindPopup('<b><a href="/#/detail/' + idEtabl + '/' + points[i].id_bat + '">' + points[i].nom_bat + '</a></b>')
 			.addTo(group);
 			}
