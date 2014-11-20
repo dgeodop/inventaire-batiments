@@ -13,23 +13,12 @@
 			</td>
 		</tr>
 	</table>
-	<!--
-	<div class="listbat">
-		<div ng-controller="ctrlBatEtabl">
-			<div ng-repeat="bat in bats">
-				<a href="#/{{bat.id_bat}}">
-					<p>{{bat.nom_bat}}</p>
-				</a>
-			</div>
-		</div>
-	</div>
-	-->
 </div>
 <div class="col-md-8">
 	<div ng-controller="ctrlBat">
 		<h2>{{bat.nom_bat}}</h2>
 		<a href="#/{{bat.id_bat}}/modif_nom_bat">
-			<button class="btn btn-default btn-sm">
+			<button class="btn btn-success btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span> Modifier le nom
 			</button>
 		</a>
@@ -49,12 +38,12 @@
 			</tr>
 		</table>
 		<a href="#/{{bat.id_bat}}/modif_adresse_bat">
-			<button class="btn btn-default btn-sm">
+			<button class="btn btn-success btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span> Modifier l'adresse
 			</button>
 		</a>
 		<a href="geocode.html?lat={{bat.lat}}&lng={{bat.lng}}&id_bat={{bat.id_bat}}&id_etabl={{etabl.idEtabl}}">
-			<button class="btn btn-default btn-sm">
+			<button class="btn btn-success btn-sm">
 				<span class="glyphicon glyphicon-globe"></span> Géolocalisation
 			</button>
 		</a>
@@ -71,7 +60,7 @@
 				</tr>
 			</table>
 			<a href="#/{{idBat}}/modif_salles_bat">
-				<button class="btn btn-default btn-sm">
+				<button class="btn btn-success btn-sm">
 					<span class="glyphicon glyphicon-pencil"></span> Modifier les salles
 				</button>
 			</a>
@@ -86,7 +75,7 @@
 			</tr>
 		</table>
 		<a href="#/{{bat.id_bat}}/modif_annees_bat">
-			<button class="btn btn-default btn-sm">
+			<button class="btn btn-success btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span> Modifier les années
 			</button>
 		</a>
@@ -97,7 +86,7 @@
 			</tr>
 		</table>
 		<a href="#/{{bat.id_bat}}/modif_site_bat">
-			<button class="btn btn-default btn-sm">
+			<button class="btn btn-success btn-sm">
 				<span class="glyphicon glyphicon-pencil"></span> Modifier le site
 			</button>
 		</a>		

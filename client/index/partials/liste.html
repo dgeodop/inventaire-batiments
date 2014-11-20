@@ -1,15 +1,18 @@
 <br><br>
+<h3>Pour voir les bâtiments d'un établissement</h3>
 <form class="form-inline">
 	<div ng-controller="ctrlEtabl as app">
 		<label>Choisir un établissement:</label>
 		<select name="id_etabl" class="form-control" ng-model="app.etb.idEtabl">
 			<option ng-repeat="etabl in etabls" value="{{etabl.id_etabl}}">{{etabl.nom_court}}</option>
 		</select>
-		<input type="submit" 
-			value="voir les bâtiments" 
+		<button type="submit" 
 			ng-click="app.choix(app.etb)" 
-			class="btn btn-primary form-control"/>
+			class="btn btn-primary form-control">
+			<span class="glyphicon glyphicon-eye-open"></span>
+		</button>
 	</div>
 </form>
 <br><br>
-<p>Pour modifier les données de votre établissement, veuillez vous enregistrer en appuyant sur le bouton "Login" en haut à droite</p>
+<h3>Pour modifier les données d'un établissement</h3>
+<p>Veuillez vous enregistrer en appuyant sur le bouton "Login" en haut à droite</p>

@@ -1,16 +1,18 @@
-<h4>
-	<a href="#/">Liste des bâtiments</a>
-</h4>
 <div class="col-md-4">
-	<div class="listbat">
-		<div ng-controller="ctrlBatEtabl">
-			<div ng-repeat="bat in bats">
+	<h4>
+		<a href="#/">
+			Liste des bâtiments
+		</a>
+	</h4>
+	<table ng-controller="ctrlBatEtabl" class="table table-condensed listbat">
+		<tr ng-repeat="bat in bats">
+			<td>
 				<a href="#/{{bat.id_bat}}">
 					<p>{{bat.nom_bat}}</p>
-				</a>
-			</div>
-		</div>
-	</div>
+				</a>			
+			</td>
+		</tr>
+	</table>
 </div>
 <div class="col-md-8">
 	<h4>
