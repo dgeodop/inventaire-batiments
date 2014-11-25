@@ -256,3 +256,33 @@ exports.editGeo = function(req, res) {
 		});
 	});
 }
+
+exports.setDir = function(req,res) {
+	var idBatDgeo = req.params.idBatDgeo;
+	var idEtabl = req.params.idEtabl;
+	var querySetDirZero = "UPDATE bat_dgeo SET dir=0 WHERE id_etabl=$1";
+	var querySetDir = "UPDATE bat_dgeo SET dir=1 WHERE id_bat_dgeo=$1";
+	var queryEvent = "INSERT INTO  event (typ_event, id_etabl, date) VALUES ($1, $2, now())";
+	pg.connect(connectString, function(err, client, done) {
+		if(err) { return console.error('erreur de connection au serveur', err); }
+		client.query(querySetDirZero, [idEtabl], function(err, result) {
+			done();
+			if(err) { return console.error('postbat.setDir.querySetDirZero', err); }
+			pg.connect(connectString, function(err, client, done) {
+				if(err) { return console.error('erreur de connection au serveur', err); }
+				client.query(querySetDir, [idBatDgeo], function(err, result) {
+					done();
+					if(err) { return console.error('postbat.setDir.querySetDir', err); }
+					pg.connect(connectString, function(err, client, done) {
+						if(err) { return console.error('erreur de connection au serveur', err); }
+						client.query(queryEvent, ['dir', idEtabl], function(err, result) {
+							done();
+							if(err) { return console.error('postbat.setDir.queryEvent', err); }
+							res.redirect('/etb/' + idEtabl + '/api/bat/')
+						});
+					});
+				});
+			});
+		});
+	});
+}

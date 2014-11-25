@@ -90,6 +90,7 @@ app.post('/etb/:idEtabl/api/bat/:idBat/nom', ctrlPostBat.editNom);
 app.post('/etb/:idEtabl/api/bat/:idBat/anconstr', ctrlPostBat.editAnConstr);
 app.post('/etb/:idEtabl/api/bat/:idBat/anrenov', ctrlPostBat.editAnRenov);
 app.post('/etb/:idEtabl/api/bat/:idBat/site', ctrlPostBat.editSite);
+app.post('/etb/:idEtabl/api/bat/:idBatDgeo/dir', ctrlPostBat.setDir);
 app.post('/geo/api/bat/geo', ctrlPostBat.editGeo);
 
 app.get('/etb/:idEtabl/api/sal/:idBat', ctrlSal.getAllOfBat);

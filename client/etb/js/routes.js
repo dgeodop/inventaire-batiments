@@ -4,6 +4,7 @@ routes.config(['$routeProvider',
  function($routeProvider) {
  $routeProvider
  	.when('/', {templateUrl: 'partials/bat_in_etabl.html'})
+ 	.when('/dir', {templateUrl: 'partials/dir.html'})
 	.when('/suppr_bat', {templateUrl: 'partials/suppr_bat.html'})
 	.when('/ajout_bat', {templateUrl: 'partials/ajout_bat.html'})
 	.when('/ajout_bat/ancien', {templateUrl: 'partials/ajout_bat_ancien.html'})

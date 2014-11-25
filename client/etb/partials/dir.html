@@ -1,0 +1,35 @@
+<div>
+	<div class="col-md-4">
+		<a href="#/">
+			<button class="btn btn-default">
+				<span class="glyphicon glyphicon-step-backward"></span>
+				<span> Retour à la liste des bâtiments</span>
+			</button>
+		</a>
+	</div>
+	<div class="col-md-8">
+		<h4>Choisir le bâtiment de direction</h4>
+		<table ng-controller="ctrlBatEtabl as edit" class="table">
+			<tr class="active">
+				<td>NOM</td>
+				<td>DIRECTION</td>
+				<td></td>
+			<tr>
+			<tr ng-repeat="bat in bats" ng-class="{'warning': bat.dir == 1}">
+				<td>
+					{{bat.nom_bat}}	
+				</td>
+				<td>
+					<span style="font-size: 20px" ng-class="{'glyphicon glyphicon-home': bat.dir == 1}"></span>
+				</td>
+				<td>
+					<button class="btn btn-success" ng-click="edit.setDir(bat)">
+						<span class="glyphicon glyphicon-ok"></span>
+						<span> Choisir</span>
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
