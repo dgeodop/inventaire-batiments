@@ -14,11 +14,15 @@
 		<tr class="active">
 			<td>ID</td>
 			<td>NOM</td>
+			<td>DIRECTION</td>
 			<td></td>
 		</tr>
 		<tr ng-repeat="bat in bats">
 			<td>{{bat.id_bat_dgeo}}</td>
 			<td>{{bat.nom_bat}}</td>
+			<td>
+				<span style="font-size: 20px" ng-class="{'glyphicon glyphicon-home': bat.dir == 1}"></span>
+			</td>
 			<td>
 				<a href="#/detail/{{idEtabl}}/{{bat.id_bat}}">
 					<button class="btn btn-primary">Détail</button>

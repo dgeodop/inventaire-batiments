@@ -1,8 +1,8 @@
 <br><br>
 <h3>Pour voir les bâtiments d'un établissement</h3>
+<p>Choisir un établissement:</p>
 <form class="form-inline">
 	<div ng-controller="ctrlEtabl as app">
-		<label>Choisir un établissement:</label>
 		<select name="id_etabl" class="form-control" ng-model="app.etb.idEtabl">
 			<option ng-repeat="etabl in etabls" value="{{etabl.id_etabl}}">{{etabl.nom_court}}</option>
 		</select>
