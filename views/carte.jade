@@ -8,8 +8,10 @@ html
 		script.
 			var idEtabl = #{idEtabl};
 			var map = L.map('map');
-			L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-				attribution: '<a href="http://www.openstreetmap.org">OpenStreetMap</a>'
+			L.tileLayer('https://{s}.tiles.mapbox.com/v3/dgeo-dop.hln6neni/{z}/{x}/{y}.png', {
+				attribution: 'Fond de carte: <a href="http://www.openstreetmap.org"/>OpenStreetMap</a> / MapBox',
+				key: 'BC9A493B41014CAABB98F0471D759707',
+				styleId: 22677
 			}).addTo(map);
 			var group = L.featureGroup([]).addTo(map);
 			var points =!{JSON.stringify(data)};

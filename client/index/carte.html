@@ -31,9 +31,13 @@ $.extend({
 	var lat= $.getUrlVar('lat');
 	var lng= $.getUrlVar('lng');
 
-var map = L.map('map').setView([lat, lng], 14);
+var map = L.map('map').setView([lat, lng], 16);
 
-L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: 'OpenStreetMap'}).addTo(map);
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/dgeo-dop.hln6neni/{z}/{x}/{y}.png', {
+	attribution: 'Fond de carte: <a href="http://www.openstreetmap.org"/>OpenStreetMap</a> / MapBox',
+	key: 'BC9A493B41014CAABB98F0471D759707',
+	styleId: 22677
+}).addTo(map);
 
 var point = L.marker([lat, lng]).addTo(map);
 

@@ -10,13 +10,25 @@
 	<div class="container">
 		<h4>Vérifiez la géolocalisation du bâtiment</h4>
 		<div id="map" style="height: 500px;"></div>
-		<p>Placez le point sur le bâtiment (zoomez si nécessaire) et confirmez la position en appuyant sur le bouton "Enregistrer"</p>
-		<form>
-			<input type="hidden" id="latitude" name="lat">
-			<input type="hidden" id="longitude" name="lng">
-			<input type="hidden" id="id_bat" name="id_bat">
-			<input type="submit" value="Enregistrer" class="btn btn-primary">
-		</form>
+		<br/>
+		<div class="row">
+			<div class="col-md-6">
+						<p>Placez le point sur le bâtiment (zoomez si nécessaire) et confirmez la position en appuyant sur le bouton "Enregistrer la position". Si la position est déjà correcte, appuyez sur le bouton "Retour sans modifier la position"</p>
+			</div>
+			<div class="col-md-3">
+					<form>
+						<input type="hidden" id="latitude" name="lat">
+						<input type="hidden" id="longitude" name="lng">
+						<input type="hidden" id="id_bat" name="id_bat">
+						<input type="submit" value="Enregistrer la position" class="btn btn-success">
+					</form>
+			</div>
+			<div class="col-md-3">
+				<button id="retour" class="btn btn-danger">
+					Retour sans modifier la position
+				</button>
+			</div>
+		</div>
 	</div>
 <script>
 $.extend({
@@ -41,9 +53,13 @@ $.extend({
 	var id_bat= $.getUrlVar('id_bat');
 	var id_etabl= $.getUrlVar('id_etabl');
 
-var map = L.map('map').setView([lat, lng], 15);
+var map = L.map('map').setView([lat, lng], 16);
 
-L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: 'OpenStreetMap'}).addTo(map);
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/dgeo-dop.hln6neni/{z}/{x}/{y}.png', {
+	attribution: 'Fond de carte: <a href="http://www.openstreetmap.org"/>OpenStreetMap</a> / MapBox',
+	key: 'BC9A493B41014CAABB98F0471D759707',
+	styleId: 22677
+}).addTo(map);
 
 var point = L.marker([lat, lng]).addTo(map);
 
@@ -68,6 +84,9 @@ $(document).ready(function() {
 				console.log(textStatus);
 			}
 		});
+		window.location.href = '/etb/' + id_etabl + '/#/' + id_bat;
+	});
+	$('#retour').on('click', function() {
 		window.location.href = '/etb/' + id_etabl + '/#/' + id_bat;
 	});
 });
